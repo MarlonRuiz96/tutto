@@ -1,0 +1,39 @@
+<div class="bg-white p-6 rounded shadow-lg max-w-md mx-auto">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">
+    <input
+      [(ngModel)]="task.title"
+      class="border rounded px-2 py-1 w-full"
+      placeholder="Título de la tarea"
+    />
+  </h2>
+
+  <p class="text-gray-600 text-sm">
+    <textarea
+      [(ngModel)]="task.description"
+      class="border rounded px-2 py-1 w-full"
+      placeholder="Descripción"
+    ></textarea>
+  </p>
+
+  <p class="mt-2"><strong>Estado:</strong></p>
+  <select [(ngModel)]="task.status_id" class="border rounded px-2 py-1 w-full">
+    <option *ngFor="let status of status" [value]="status.id">
+      {{ status.name }}
+    </option>
+  </select>
+
+  <p class="mt-2"><strong>Asignado a Usuario:</strong></p>
+  <select [(ngModel)]="task.user_id" class="border rounded px-2 py-1 w-full">
+    <option *ngFor="let user of users" [value]="user.id">
+      {{ user.user }}
+    </option>
+  </select>
+
+  <button class="btn btn-info" routerLink="/dashboard">
+    Volver al Dashboard
+  </button>
+
+  <button class="btn btn-success" (click)="saveTask()">
+    {{ isEditing ? "Guardar Cambios" : "Crear Tarea" }}
+  </button>
+</div>

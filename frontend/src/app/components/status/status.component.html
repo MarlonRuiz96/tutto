@@ -1,0 +1,52 @@
+<div class="bg-base-200 min-h-screen p-6">
+    <div class="w-full max-w-4xl mx-auto">
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title text-2xl mb-4">Gestión de Estados</h2>
+  
+          <!--Formulario para agregar un nuevo estado -->
+          <div class="flex items-center space-x-2 mb-4">
+            <input 
+              [(ngModel)]="newStatus.name"
+              type="text"
+              class="input input-bordered w-full"
+              placeholder="Nuevo estado..."
+            />
+            <button class="btn btn-success" (click)="createStatus()">
+              Agregar
+            </button>
+          </div>
+  
+          <!--Tabla de Estados -->
+          <div class="overflow-x-auto">
+            <table class="table w-full">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th class="text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let status of statuses">
+                  <td>{{ status.id }}</td>
+                  <td>{{ status.name }}</td>
+                  <td class="text-right">
+                    <button class="btn btn-error btn-sm" (click)="deleteStatus(status.id)">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <!-- Botón para volver al Dashboard -->
+          <div class="mt-8 text-center">
+            <button class="btn btn-info" routerLink="/dashboard">Volver al Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

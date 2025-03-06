@@ -1,0 +1,53 @@
+<!-- Contenedor principal con fondo y padding -->
+<div class="bg-base-200 min-h-screen p-6">
+  <!-- Contenedor para centrar horizontalmente la tarjeta -->
+  <div class="w-full max-w-4xl mx-auto">
+    <!-- Tarjeta con daisyUI -->
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <!-- Título de la sección -->
+        <h2 class="card-title text-2xl mb-4">Lista de Usuarios</h2>
+
+        <!-- Tabla responsiva -->
+        <div class="overflow-x-auto">
+          <table class="table w-full">
+            <!-- Encabezados de la tabla -->
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Creado</th>
+                <th class="text-right">Acciones</th>
+              </tr>
+            </thead>
+            <!-- Cuerpo de la tabla: iteramos con *ngFor -->
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.user }}</td>
+                <!-- ✅ Corregido -->
+                <td>{{ user.created_at }}</td>
+                <td class="text-right">
+                  <button
+                    class="px-4 py-2 rounded text-sm bg-gray-200 hover:bg-gray-300 text-gray-800"
+                    [routerLink]="['/user', user.id]"
+                  >
+                    Editar
+                  </button>
+                  <button class="btn btn-error btn-sm" (click)="deleteUser(user.id)">
+                    Eliminar
+                  </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Botón para Añadir Nueva Tarea -->
+        <div class="mt-8 text-center">
+          <button class="btn btn-success" [routerLink]="['/user/new']">
+            Añadir Nuevo Usuario
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

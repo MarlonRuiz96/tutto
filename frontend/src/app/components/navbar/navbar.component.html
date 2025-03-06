@@ -1,0 +1,36 @@
+<nav class="navbar bg-neutral text-neutral-content">
+  <!-- Sección izquierda (logo) -->
+  <div class="navbar-start">
+    <!-- Enlace o botón fantasma con el logo -->
+    <a routerLink="/" class="btn btn-ghost normal-case text-xl">
+      <img 
+        src="https://tutto.gt/assets/logo-dark.png" 
+        alt="Logo"
+        class="h-8 w-auto"
+      />
+    </a>
+  </div>
+
+  <!-- Sección derecha (enlaces) -->
+  <div class="navbar-end gap-2">
+    <a 
+      routerLink="/status" 
+      class="btn btn-ghost hover:bg-neutral-focus"
+    >
+      Estados
+    </a>
+    <a 
+      routerLink="/dashboard" 
+      class="btn btn-ghost hover:bg-neutral-focus"
+    >
+      Tareas
+    </a>
+    <a 
+      routerLink="/users" 
+      class="btn btn-ghost hover:bg-neutral-focus"
+    >
+      Usuarios
+    </a>
+  </div>
+
+</nav>

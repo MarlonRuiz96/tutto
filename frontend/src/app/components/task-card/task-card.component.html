@@ -1,0 +1,46 @@
+<div class="bg-white p-4 rounded shadow hover:shadow-md transition-shadow">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="text-xl font-semibold text-gray-800">{{ task.title }}</h3>
+
+    <span [ngClass]="{
+      'bg-yellow-100 text-yellow-700': task.status?.name === 'Pending',
+      'bg-green-100 text-green-700': task.status?.name === 'Completed',
+      'bg-red-100 text-red-700': task.status?.name === 'In Progress',
+      'bg-gray-100 text-gray-700': !task.status?.name
+
+    }" class="text-xs px-2 py-1 rounded">
+    {{ task.status?.name || 'Sin categoria' }}
+  </span>
+  </div>
+
+  <p class="text-gray-600 text-sm">{{ task.description }}</p>
+
+  <p class="text-sm text-gray-500">
+    <strong>Asignado a:</strong> {{ task.user?.user || 'No asignado' }}
+  </p>
+
+  <div class="mt-4 flex justify-between items-center">
+    <div class="flex space-x-2">
+      <button  
+        [disabled]="task?.status?.name === 'Completed'" 
+        class="px-4 py-2 rounded text-sm" 
+        [ngClass]="{ 
+          'bg-blue-500 hover:bg-blue-600 text-white': task?.status?.name !== 'Completed', 
+          'bg-gray-300 text-gray-600 cursor-not-allowed': task?.status?.name === 'Completed' 
+        }" 
+        (click)="completeTask()"> 
+        {{ task?.status?.name === 'Completed' ? 'Hecho' : 'Completar' }} 
+      </button>
+
+      <button class="px-4 py-2 rounded text-sm bg-gray-200 hover:bg-gray-300 text-gray-800"
+        [routerLink]="['/task', task.id]">
+        Editar
+      </button>
+      
+      <button class="px-4 py-2 rounded text-sm bg-red-500 hover:bg-red-600 text-white"
+        (click)="deleteTask(task.id)">
+        Borrar
+      </button>
+    </div>
+  </div>
+</div>
